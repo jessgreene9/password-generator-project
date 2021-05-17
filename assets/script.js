@@ -41,50 +41,42 @@ function promptMessage() {
     promptMessage();
   } 
   
-var password = [];
-
-if (includesNumbers===true){
-  password.push(numeric);
-}
- if (includesLower=== true) {
-   password.push(lowerCase);
- }
-
- if (includesUpper=== true) {
-   password.push(upperCase);
- }
-
- if (includesSpecial=== true ) {
-   password.push(special);
- }
-
- console.log(Password);
-
- var finalPassword = ''; 
+var password = '';
 
 for (i=0; i<passwordLength; i++) {
-var randomArray = finalPassword [Math.floor(Math.random() * finalPassword.length)];
-var randomCharacters = randomArray [Math.floor(Math.random() * randomArray.length)];
-finalPassword += randomCharacters
+
+if (includesNumbers===true && password.length <passwordLength) { 
+password += getRandom (numeric);
+
+}
+if (includesLower===true && password.length <passwordLength) { 
+  password += getRandom (lowerCase);
+ }
+
+ if (includesUpper===true && password.length <passwordLength) { 
+  password += getRandom (upperCase);
+ }
+
+ if (includesSpecial===true && password.length <passwordLength) { 
+  password += getRandom (special);
+ }
 
 
 }
- return finalPassword;
+
 
 } 
- 
+return password;
+
 
 };
-
-
-
-
 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+
 }
 
 
