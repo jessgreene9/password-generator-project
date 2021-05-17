@@ -7,47 +7,61 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 
+
+// Write password to the #password input
+
+  
+  
+
 var generatePassword= function() {
   var passwordLength = promptMessage();
 
- 
 
-
-
-
-}
 
 function promptMessage() {
   var choice = prompt ("Please enter the desired length of your password.");
-  if (choice > 128 || choice < 8) {
+  if
+  (choice > 128 || choice < 8) {
     alert ("Please choose a number between between 8 and 128.");
     promptMessage();
+  }else {
+  var includesNumbers = confirm("Select OK to include numbers");
+  var includesLower = confirm ("Select OK to include lowercase letters");
+  var includesUpper = confirm ("Select OK to include uppercase letters");
+  var includesSpecial = confirm ("Select OK to include special characters"); }
+  
+  
+    
 } 
  
-}
+
+
+};
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
