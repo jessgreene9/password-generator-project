@@ -12,28 +12,62 @@ var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 
   
   
-
+// create function for generating password
 var generatePassword= function() {
   var passwordLength = promptMessage();
 
-
-
+// creates prompt message when generate button is clicked
 function promptMessage() {
-  var choice = prompt ("Please enter the desired length of your password.");
+  
+  
+  var length = prompt ("Please enter the desired length of your password.");
+  
+  //checks for parameters for password and returns to prompt message
   if
-  (choice > 128 || choice < 8) {
+  (length > 128 || length < 8) {
     alert ("Please choose a number between between 8 and 128.");
     promptMessage();
-  }else {
+  }
+  //goes through confirm messages for each type of character
+  else {
   var includesNumbers = confirm("Select OK to include numbers");
   var includesLower = confirm ("Select OK to include lowercase letters");
   var includesUpper = confirm ("Select OK to include uppercase letters");
   var includesSpecial = confirm ("Select OK to include special characters"); }
   
+  // if none is chosen, gives alert message and goes back to original prompt
+  if (!includesNumbers && !includesLower && !includesUpper && !includesSpecial) {
+    alert ("Please select at least one password character type");
+    promptMessage();
+  } 
   
-    
+var password = [];
+
+if (includesNumbers){
+  password.push(numeric);
+}
+ if (includesLower) {
+   password.push(lowerCase);
+ }
+
+ if (includesUpper) {
+   password.push(upperCase);
+ }
+
+ if (includesSpecial) {
+   password.push(special);
+ }
+
+ 
+for (i=0; i<passwordLength; i++) {
+
+}
+
+
 } 
  
+
+
 
 
 };
