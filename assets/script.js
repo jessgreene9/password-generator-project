@@ -43,32 +43,36 @@ function promptMessage() {
   
 var password = [];
 
-if (includesNumbers){
+if (includesNumbers===true){
   password.push(numeric);
 }
- if (includesLower) {
+ if (includesLower=== true) {
    password.push(lowerCase);
  }
 
- if (includesUpper) {
+ if (includesUpper=== true) {
    password.push(upperCase);
  }
 
- if (includesSpecial) {
+ if (includesSpecial=== true ) {
    password.push(special);
  }
 
- 
+ console.log(Password);
+
+ var finalPassword = ''; 
+
 for (i=0; i<passwordLength; i++) {
+var randomArray = finalPassword [Math.floor(Math.random() * finalPassword.length)];
+var randomCharacters = randomArray [Math.floor(Math.random() * randomArray.length)];
+finalPassword += randomCharacters
+
 
 }
-
+ return finalPassword;
 
 } 
  
-
-
-
 
 };
 
