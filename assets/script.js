@@ -15,78 +15,79 @@ var userChoices = [];
 // create function for generating password
 function generatePassword() {
 
+  // creates a string for the password
+  var password = "";
 
   // creates prompt message when generate button is clicked
-
-
-
   passwordLength = parseInt(prompt("Please enter the desired length of your password."));
+  if (!passwordLength) {
+    return null;
+  }
 
   //checks for parameters for password and returns to prompt message
   if
-    (passwordLength > 128 || passwordLength < 8 || isNaN(passwordLength)===true) {
+    (passwordLength > 128 || passwordLength < 8 || isNaN(passwordLength) === true) {
     alert("Please choose a number between between 8 and 128.");
     return generatePassword();
   }
 
-  
+
   //goes through confirm messages for each type of character
   else {
     var includesNumbers = confirm("Select OK to include numbers");
     var includesLower = confirm("Select OK to include lowercase letters");
     var includesUpper = confirm("Select OK to include uppercase letters");
     var includesSpecial = confirm("Select OK to include special characters");
-  }
 
-  // if none is chosen, gives alert message and goes back to original prompt
-  if (!includesNumbers && !includesLower && !includesUpper && !includesSpecial) {
-    alert("Please select at least one password character type");
-    return generatePassword();
-  }
 
-  // creates a new array given each choice made by the user
-  if (includesSpecial) {
-    userChoices = userChoices.concat(special);
-  }
-  if (includesNumbers) {
-    userChoices = userChoices.concat(numeric);
-  }
-  if (includesLower) {
-    userChoices = userChoices.concat(lowerCase);
-  }
-  if (includesUpper) {
-    userChoices = userChoices.concat(upperCase);
-  }
+    // if none is chosen, gives alert message and goes back to original prompt
+    if (!includesNumbers && !includesLower && !includesUpper && !includesSpecial) {
+      alert("Please select at least one password character type");
+      return generatePassword();
+    }
 
-  // creates a string for the password
-  var password = "";
+    // creates a new array given each choice made by the user
+    if (includesSpecial) {
+      userChoices = userChoices.concat(special);
+    }
+    if (includesNumbers) {
+      userChoices = userChoices.concat(numeric);
+    }
+    if (includesLower) {
+      userChoices = userChoices.concat(lowerCase);
+    }
+    if (includesUpper) {
+      userChoices = userChoices.concat(upperCase);
+    }
 
-  //checks for each confirmation and chooses a random number for each chosen field
-  if (includesNumbers) {
-    password += numeric[Math.floor(Math.random() * numeric.length)]
 
+    //checks for each confirmation and chooses a random number for each chosen field
+    if (includesNumbers) {
+      password += numeric[Math.floor(Math.random() * numeric.length)]
+
+    }
+    if (includesLower) {
+      password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+    }
+
+    if (includesUpper) {
+      password += upperCase[Math.floor(Math.random() * upperCase.length)];
+    }
+
+    if (includesSpecial) {
+      password += special[Math.floor(Math.random() * special.length)];
+    }
+
+    //creates a variable for the amount of characters remaining in the password
+    var passwordRemaining = passwordLength - password.length;
+    //takes the current password created and adds from the userChoice array to create a more random password
+    for (var i = 0; i < passwordRemaining; i++) {
+      password += userChoices[Math.floor(Math.random() * userChoices.length)];
+    }
+
+    //resets the userChoice array
+    userChoices = [];
   }
-  if (includesLower) {
-    password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-  }
-
-  if (includesUpper) {
-    password += upperCase[Math.floor(Math.random() * upperCase.length)];
-  }
-
-  if (includesSpecial) {
-    password += special[Math.floor(Math.random() * special.length)];
-  }
-
-  //creates a variable for the amount of characters remaining in the password
-  var passwordRemaining = passwordLength - password.length;
-  //takes the current password created and adds from the userChoice array to create a more random password
-  for (var i = 0; i < passwordRemaining; i++) {
-    password += userChoices[Math.floor(Math.random() * userChoices.length)];
-  }
-
-  //resets the userChoice array
-  userChoices = [];
 
   return password;
 
