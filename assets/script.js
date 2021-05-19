@@ -42,7 +42,7 @@ function generatePassword() {
     return generatePassword();
   }
 
-// creates a new array given each choice made by the user
+  // creates a new array given each choice made by the user
   if (includesSpecial) {
     userChoices = userChoices.concat(special);
   }
@@ -56,35 +56,35 @@ function generatePassword() {
     userChoices = userChoices.concat(upperCase);
   }
 
-// creates a string for the password
+  // creates a string for the password
   var password = "";
 
-//checks for each confirmation and chooses a random number for each chosen field
-    if (includesNumbers) {
-      password += numeric[Math.floor(Math.random() * numeric.length)]
+  //checks for each confirmation and chooses a random number for each chosen field
+  if (includesNumbers) {
+    password += numeric[Math.floor(Math.random() * numeric.length)]
 
-    }
-    if (includesLower) {
-      password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-    }
+  }
+  if (includesLower) {
+    password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+  }
 
-    if (includesUpper) {
-      password += upperCase[Math.floor(Math.random() * upperCase.length)];
-    }
+  if (includesUpper) {
+    password += upperCase[Math.floor(Math.random() * upperCase.length)];
+  }
 
-    if (includesSpecial) {
-      password += special[Math.floor(Math.random() * special.length)];
-    }
+  if (includesSpecial) {
+    password += special[Math.floor(Math.random() * special.length)];
+  }
 
-    //creates a variable for the amount of characters remaining in the password
-    var passwordRemaining = passwordLength - password.length;
-    //takes the current password created and adds from the userChoice array to create a more random password
-    for (var i = 0; i < passwordRemaining; i++) {
-    password += userChoices[Math.floor(Math.random() *userChoices.length)];
+  //creates a variable for the amount of characters remaining in the password
+  var passwordRemaining = passwordLength - password.length;
+  //takes the current password created and adds from the userChoice array to create a more random password
+  for (var i = 0; i < passwordRemaining; i++) {
+    password += userChoices[Math.floor(Math.random() * userChoices.length)];
   }
 
   //resets the userChoice array
-  userChoices= [];
+  userChoices = [];
 
   return password;
 
