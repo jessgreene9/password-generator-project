@@ -24,10 +24,12 @@ function generatePassword() {
 
   //checks for parameters for password and returns to prompt message
   if
-    (passwordLength > 128 || passwordLength < 8) {
+    (passwordLength > 128 || passwordLength < 8 || isNaN(passwordLength)===true) {
     alert("Please choose a number between between 8 and 128.");
     return generatePassword();
   }
+
+  
   //goes through confirm messages for each type of character
   else {
     var includesNumbers = confirm("Select OK to include numbers");
